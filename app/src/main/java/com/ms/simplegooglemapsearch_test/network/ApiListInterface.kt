@@ -9,6 +9,9 @@ import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
 interface ApiListInterface {
+//    @GET("/maps/api/place/nearbysearch/json")
+//    fun getSearchAutoComplete(@QueryMap params: HashMap<String, String>?): Observable<Response<SearchApiResult>>
+
     @GET("/maps/api/place/nearbysearch/json")
-    fun getSearchAutoComplete(@QueryMap params: HashMap<String, String>?): Observable<Response<SearchApiResult>>
+    fun getSearchAutoComplete(@QueryMap params: HashMap<String, String>?): Observable<Response<ResponseBody>>
 }

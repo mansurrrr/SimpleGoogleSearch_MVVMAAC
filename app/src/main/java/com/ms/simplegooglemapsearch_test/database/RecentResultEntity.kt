@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import com.ms.simplegooglemapsearch_test.model.BaseSearchModel
 
 @Entity
-class RecentResultEntity: BaseSearchModel() {
+data class RecentResultEntity(
     @PrimaryKey(autoGenerate = true)
-    val locationId: String = ""
-    val lat: String = ""
+    val id: Int,
+    val locationId: String = "",
+    val lat: String = "",
     val lon: String = ""
-}
+) : BaseSearchModel()

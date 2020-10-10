@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.ms.simplegooglemapsearch_test.base.BaseActivity
 import com.ms.simplegooglemapsearch_test.R
+import com.ms.simplegooglemapsearch_test.adapter.SearchAdapter
 import com.ms.simplegooglemapsearch_test.databinding.ActivitySearchBinding
 import com.ms.simplegooglemapsearch_test.model.BaseSearchModel
 import com.ms.simplegooglemapsearch_test.viewmodel.SearchViewModel
@@ -26,13 +27,17 @@ class SearchActivity: BaseActivity() {
         vm.getResult()
     }
 
-    @BindingAdapter(value = ["repositories", "viewModel"])
-    fun setRepositories(view: RecyclerView, items: ArrayList<BaseSearchModel>, vm: SearchViewModel) {
+    @BindingAdapter(value = ["data", "viewModel"])
+    fun setLocationResults(view: RecyclerView, items: ArrayList<BaseSearchModel>, vm: SearchViewModel) {
         view.adapter?.run {
-
+            if(this is SearchAdapter) {
+                this.submitList(items)
+            }
         } ?: run {
-
+            SearchAdapter(vm).apply {
+                view.adapter = this
+                this.submitList(items)
+            }
         }
     }
-
 }

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(RecentResultEntity::class), version = 1)
+@Database(entities = [RecentResultEntity::class], version = 1, exportSchema = false)
 abstract class LocationDatabase : RoomDatabase() {
     abstract fun getDao(): RecentLocationDao
 

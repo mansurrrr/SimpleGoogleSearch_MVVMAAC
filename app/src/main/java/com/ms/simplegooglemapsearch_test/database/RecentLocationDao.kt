@@ -12,7 +12,7 @@ interface RecentLocationDao {
     fun deleteLocation(input: RecentResultEntity)
 
     @Query("SELECT * FROM recentresultentity")
-    fun getLocations(): Observable<ArrayList<RecentResultEntity>>?
+    fun getLocations(): Observable<List<RecentResultEntity>>?
 
     @Query("DELETE FROM recentresultentity")
     fun removeAll()

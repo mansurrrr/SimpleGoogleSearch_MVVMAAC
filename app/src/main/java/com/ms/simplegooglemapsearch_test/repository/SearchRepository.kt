@@ -28,7 +28,7 @@ class SearchRepository {
         Observable.zip(
             getSearchApiResult(),
             getSearchRecentResult(context),
-            BiFunction { searchList: ArrayList<SearchApiResult>?, recentList: ArrayList<RecentResultEntity>? ->
+            BiFunction { searchList: ArrayList<SearchApiResult>?, recentList: List<RecentResultEntity>? ->
                 val resultList = ArrayList<BaseSearchModel>()
                 if (recentList != null) resultList.addAll(recentList)
                 if (searchList != null) resultList.addAll(searchList)
@@ -62,7 +62,7 @@ class SearchRepository {
             }
     }
 
-    fun getSearchRecentResult(context: Context): Observable<ArrayList<RecentResultEntity>>? {
+    fun getSearchRecentResult(context: Context): Observable<List<RecentResultEntity>>? {
         /* Observable.create 사용 필요 없이, Room에서 Observable로 반환 */
         return LocationDatabase.getInstance(context)?.getDao()?.getLocations()
     }

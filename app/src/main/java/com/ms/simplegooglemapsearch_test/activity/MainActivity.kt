@@ -36,9 +36,9 @@ class MainActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Log.d("abcd", it.toString())
+                it.body()?.string()?.let { it1 -> Log.d("abcd", it1) }
             }, {
-                Log.d("abcd", it.message.toString())
+//                Log.d("abcd", it.message.toString())
             })
 //            .observeOn(AndroidSchedulers.mainThread())
 
